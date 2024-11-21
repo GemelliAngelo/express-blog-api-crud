@@ -1,42 +1,10 @@
 const express = require("express");
 const router = express.Router();
-
-const posts = [
-  {
-    title: "Ciambellone",
-    content: "Contenuto1",
-    image: "/ciambellone.jpeg",
-    tags: [""],
-  },
-  {
-    title: "Cracker alla barbabietola ",
-    content: "Contenuto2",
-    image: "/cracker_barbabietola.jpeg",
-    tags: [""],
-  },
-  {
-    title: "Pane fritto dolce",
-    content: "Contenuto3",
-    image: "/pane_fritto_dolce.jpeg",
-    tags: [""],
-  },
-  {
-    title: "Pasta alla barbabietola",
-    content: "Contenuto4",
-    image: "/pasta_barbabietola.jpeg",
-    tags: [""],
-  },
-  {
-    title: "Torta paesana",
-    content: "Contenuto5",
-    image: "/torta_paesana.jpeg",
-    tags: [""],
-  },
-];
+const postsData = require("../data/postsData.js");
 
 // * INDEX
 router.get("/", (req, res) => {
-  res.json(posts);
+  res.json(postsData);
 });
 
 // * SHOW
@@ -48,11 +16,11 @@ router.get("/:id", (req, res) => {
     return;
   }
 
-  if (id > posts.length - 1 || id < 0) {
+  if (id > postsData.length - 1 || id < 0) {
     res.status(404).send("id not found");
   }
 
-  res.json(posts[id]);
+  res.json(postsData[id]);
 });
 
 // * STORE
