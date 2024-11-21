@@ -66,8 +66,9 @@ function destroy(req, res) {
   }
 
   postsData.splice(postIndex, 1);
+  console.log(postsData);
 
-  res.json(postsData);
+  res.sendStatus(204);
 }
 
 module.exports = { index, show, store, update, modify, destroy };
