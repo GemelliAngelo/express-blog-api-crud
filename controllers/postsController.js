@@ -18,16 +18,15 @@ function show(req, res) {
   const id = parseInt(req.params.id);
 
   if (isNaN(id)) {
-    res.status(418).send("id not valid");
-    return;
+    return res.status(418).send("id not valid");
   }
 
   if (id > postsData.length - 1 || id < 0) {
-    res.status(404).send("id not found");
+    return res.status(404).send("id not found");
   }
 
-  const pizza = postsData[id];
-  res.json(pizza);
+  const post = postsData.find((post) => post.id === id);
+  res.json(post);
 }
 
 // # store
@@ -49,8 +48,26 @@ function modify(req, res) {
 
 // # destroy
 function destroy(req, res) {
-  const { id } = req.params;
-  res.send(`Eliminazione del post con indice ${id}`);
+  const id = parseInt(req.params.id);
+
+  if (isNaN(id)) {
+    return res.status(418).send("id not valid");
+  }
+
+  if (id < 0) {
+    return res.status(404).send("id not found");
+  }
+
+  const deletedPost = postsData.find((post) => post.id === id);
+  const postIndex = postsData.indexOf(deletedPost);
+
+  if (postIndex === -1) {
+    return res.status(404).send("id not found");
+  }
+
+  postsData.splice(postIndex, 1);
+
+  res.json(postsData);
 }
 
 module.exports = { index, show, store, update, modify, destroy };
