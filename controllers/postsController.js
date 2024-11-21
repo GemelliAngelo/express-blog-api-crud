@@ -18,7 +18,8 @@ function show(req, res) {
     res.status(404).send("id not found");
   }
 
-  res.json(postsData[id]);
+  const pizza = postsData[id];
+  res.json(pizza);
 }
 
 // # store

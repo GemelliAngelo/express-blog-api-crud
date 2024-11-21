@@ -3,31 +3,31 @@ const posts = [
     title: "Ciambellone",
     content: "Contenuto1",
     image: "/ciambellone.jpeg",
-    tags: [""],
+    tags: ["a", "b", "c"],
   },
   {
     title: "Cracker alla barbabietola ",
     content: "Contenuto2",
     image: "/cracker_barbabietola.jpeg",
-    tags: [""],
+    tags: ["d", "e", "f"],
   },
   {
     title: "Pane fritto dolce",
     content: "Contenuto3",
     image: "/pane_fritto_dolce.jpeg",
-    tags: [""],
+    tags: ["g", "h", "i"],
   },
   {
     title: "Pasta alla barbabietola",
     content: "Contenuto4",
     image: "/pasta_barbabietola.jpeg",
-    tags: [""],
+    tags: ["l", "m", "n"],
   },
   {
     title: "Torta paesana",
     content: "Contenuto5",
     image: "/torta_paesana.jpeg",
-    tags: [""],
+    tags: ["o", "p", "q"],
   },
 ];
 
