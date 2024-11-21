@@ -1,3 +1,5 @@
+const postsData = require("../data/postsData.js");
+
 // # index
 function index(req, res) {
   res.json(postsData);

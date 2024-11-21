@@ -1,8 +1,7 @@
 // # Raccolta dati
 const express = require("express");
 const router = express.Router();
-const postsData = require("../data/postsData.js");
-const postsController = require("../controller/postsController.js");
+const postsController = require("../controllers/postsController.js");
 
 // # Routers
 router.get("/", postsController.index);
