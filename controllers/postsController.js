@@ -37,7 +37,17 @@ function store(req, res) {
   if (!title || !content || !image || !tags?.length) {
     res.status(400).send({ error: "Missing data not found" });
   }
-  res.send(`Aggiunta di un post`);
+
+  const newPost = {
+    id: id,
+    title: title,
+    content: content,
+    image: image,
+    tags: tags,
+  };
+
+  postsData.push(newPost);
+  res.json(postsData);
 }
 
 // # update
