@@ -1,6 +1,7 @@
+// * DATABASE CONFIG
 const postsData = require("../data/postsData.js");
 
-// # index
+// # INDEX
 function index(req, res) {
   const tag = req.query.tag ?? "";
   let filteredPost = postsData;
@@ -13,7 +14,7 @@ function index(req, res) {
   res.json(filteredPost);
 }
 
-// # show
+// # SHOW
 function show(req, res) {
   const id = parseInt(req.params.id);
 
@@ -29,7 +30,7 @@ function show(req, res) {
   res.json(post);
 }
 
-// # store
+// # STORE
 function store(req, res) {
   const { title, content, image, tags } = req.body;
   const id = postsData.at(-1).id + 1;
@@ -50,19 +51,19 @@ function store(req, res) {
   res.json(postsData);
 }
 
-// # update
+// # UPDATE
 function update(req, res) {
   const { id } = req.params;
   res.send(`Modifica integrale del post con indice ${id}`);
 }
 
-// # modify
+// # MODIFY
 function modify(req, res) {
   const { id } = req.params;
   res.send(`Modifica parziale del post con indice ${id}`);
 }
 
-// # destroy
+// # DESTROY
 function destroy(req, res) {
   const id = parseInt(req.params.id);
 
@@ -87,4 +88,5 @@ function destroy(req, res) {
   res.sendStatus(204);
 }
 
+// # EXPORTS
 module.exports = { index, show, store, update, modify, destroy };

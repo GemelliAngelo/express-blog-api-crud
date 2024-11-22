@@ -1,3 +1,4 @@
+// # DATABASE DATA
 const posts = [
   {
     id: 1,
