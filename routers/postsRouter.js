@@ -1,6 +1,10 @@
-// # ROUTER DATA
+// # EXPRESS INPORT
 const express = require("express");
+
+// # ROUTER CONFIG
 const router = express.Router();
+
+// # CONTROLLER INPORT
 const postsController = require("../controllers/postsController.js");
 
 // # ROUTER METHOD

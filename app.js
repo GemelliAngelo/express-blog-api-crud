@@ -1,9 +1,15 @@
 // # INIT EXPRESS
-require("dotenv").config();
 const express = require("express");
 const app = express();
+
+// # DOTENV CONFIG
+require("dotenv").config();
+
+// # DOTENV PROCESS DATA
 const port = process.env.HOST_PORT;
 const domain = process.env.HOST_DOMAIN;
+
+// # ROUTER INPORT
 const postsRouter = require("./routers/postsRouter");
 
 // # JSON PARSER FOR BODY REQUEST
