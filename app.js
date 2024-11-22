@@ -1,7 +1,9 @@
 // # INIT EXPRESS
+require("dotenv").config();
 const express = require("express");
 const app = express();
-const port = 3000;
+const port = process.env.HOST_PORT;
+const domain = process.env.HOST_DOMAIN;
 const postsRouter = require("./routers/postsRouter");
 
 // # JSON PARSER FOR BODY REQUEST
@@ -20,5 +22,5 @@ app.get("/", (req, res) => {
 
 // # SERVER LISTENING
 app.listen(port, () => {
-  console.log(`App listening on port ${port}`);
+  console.log(`App listening at ${domain}:${port}`);
 });

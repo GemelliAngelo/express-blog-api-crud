@@ -1,4 +1,4 @@
-// * DATABASE CONFIG
+// * DATABASE INPORT
 const postsData = require("../data/postsData.js");
 
 // # INDEX
