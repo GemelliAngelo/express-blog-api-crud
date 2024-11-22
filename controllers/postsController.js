@@ -32,19 +32,23 @@ function show(req, res) {
 
 // # STORE
 function store(req, res) {
-  const { title, content, image, tags } = req.body;
   const id = postsData.at(-1).id + 1;
 
-  if (!title || !content || !image || !tags?.length) {
-    res.status(400).send({ error: "Missing data not found" });
+  if (
+    !req.body.title ||
+    !req.body.content ||
+    !req.body.image ||
+    !req.body.tags?.length
+  ) {
+    return res.status(400).send({ error: "Missing data not found" });
   }
 
   const newPost = {
     id: id,
-    title: title,
-    content: content,
-    image: image,
-    tags: tags,
+    title: req.body.title,
+    content: req.body.content,
+    image: req.body.image,
+    tags: req.body.tags,
   };
 
   postsData.push(newPost);

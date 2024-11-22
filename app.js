@@ -1,15 +1,17 @@
 // # INIT EXPRESS
 const express = require("express");
 const app = express();
-const port = 3001;
-const postsRouter = require("./routers/posts");
-
-// # EXPRESS ROUTING
-app.use(express.static("public"));
-app.use("/posts", postsRouter);
+const port = 3000;
+const postsRouter = require("./routers/postsRouter");
 
 // # JSON PARSER FOR BODY REQUEST
 app.use(express.json());
+
+// # PUBLIC STATIC ASSETS
+app.use(express.static("public"));
+
+// # EXPRESS ROUTING
+app.use("/posts", postsRouter);
 
 // # HOMEPAGE
 app.get("/", (req, res) => {
