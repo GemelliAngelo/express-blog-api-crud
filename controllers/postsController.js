@@ -31,6 +31,12 @@ function show(req, res) {
 
 // # store
 function store(req, res) {
+  const { title, content, image, tags } = req.body;
+  const id = postsData.at(-1).id + 1;
+
+  if (!title || !content || !image || !tags?.length) {
+    res.status(400).send({ error: "Missing data not found" });
+  }
   res.send(`Aggiunta di un post`);
 }
 
@@ -51,18 +57,18 @@ function destroy(req, res) {
   const id = parseInt(req.params.id);
 
   if (isNaN(id)) {
-    return res.status(418).send("id not valid");
+    return res.status(418).send({ error: "id not valid" });
   }
 
   if (id < 0) {
-    return res.status(404).send("id not found");
+    return res.status(404).send({ error: "id not found" });
   }
 
   const deletedPost = postsData.find((post) => post.id === id);
   const postIndex = postsData.indexOf(deletedPost);
 
   if (postIndex === -1) {
-    return res.status(404).send("id not found");
+    return res.status(404).send({ error: "id not found" });
   }
 
   postsData.splice(postIndex, 1);
