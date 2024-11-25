@@ -30,6 +30,10 @@ app.get("/", (req, res) => {
   res.send(`<h1>SERVER DEL MIO BLOG</h1>`);
 });
 
+// # HANDLING ERRORS
+app.use(errorsHandler);
+app.use(notFound);
+
 // # SERVER LISTENING
 app.listen(port, () => {
   console.log(`App listening at ${domain}:${port}`);

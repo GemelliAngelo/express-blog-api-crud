@@ -25,7 +25,8 @@ function show(req, res) {
 
   // * managing error
   if (isNaN(id)) {
-    return res.status(400).send({ error: "id not valid" });
+    const err = new Error("Id not valid");
+    throw err;
   }
 
   // * variable
@@ -33,7 +34,8 @@ function show(req, res) {
 
   // * managing error
   if (!post) {
-    res.status(400).send({ error: "Data not found" });
+    const err = new Error("Data not found");
+    throw err;
   }
 
   // * output
@@ -48,7 +50,8 @@ function store(req, res) {
 
   // * managing error
   if (!title || !content || !image || !tags?.length) {
-    return res.status(400).send({ error: "Missing data not found" });
+    const err = new Error("Missing data not found");
+    throw err;
   }
 
   // * variable
@@ -74,7 +77,8 @@ function update(req, res) {
 
   // * managing error
   if (isNaN(id)) {
-    return res.status(418).send({ error: "id not valid" });
+    const err = new Error("Id not valid");
+    throw err;
   }
 
   // * variable
@@ -82,7 +86,8 @@ function update(req, res) {
 
   //  * managing error
   if (!post) {
-    res.status(400).send({ error: "Data not found" });
+    const err = new Error("Data not found");
+    throw err;
   }
 
   // * variable
@@ -90,7 +95,8 @@ function update(req, res) {
 
   // * managing error
   if (!title || !content || !image || !tags?.length) {
-    return res.status(400).send({ error: "Missing data not found" });
+    const err = new Error("Missing data not found");
+    throw err;
   }
 
   (post.id = id),
@@ -120,11 +126,13 @@ function destroy(req, res) {
 
   // * managing errors
   if (isNaN(id)) {
-    return res.status(400).send({ error: "id not valid" });
+    const err = new Error("Id not valid");
+    throw err;
   }
 
   if (id < 0) {
-    return res.status(400).send({ error: "id not found" });
+    const err = new Error("Id not found");
+    throw err;
   }
 
   // * variables
@@ -133,7 +141,8 @@ function destroy(req, res) {
 
   // * managing errors
   if (postIndex === -1) {
-    return res.status(400).send({ error: "id not found" });
+    const err = new Error("Id not found");
+    throw err;
   }
 
   postsData.splice(postIndex, 1);
