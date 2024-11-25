@@ -2,15 +2,19 @@
 const express = require("express");
 const app = express();
 
+// # MIDDLEWARES IMPORTS
+const errorsHandler = require("./middlewares/errorHandler");
+const notFound = require("./middlewares/notFound");
+
+// # ROUTER INPORT
+const postsRouter = require("./routers/postsRouter");
+
 // # DOTENV CONFIG
 require("dotenv").config();
 
 // # DOTENV PROCESS DATA
 const port = process.env.HOST_PORT;
 const domain = process.env.HOST_DOMAIN;
-
-// # ROUTER INPORT
-const postsRouter = require("./routers/postsRouter");
 
 // # JSON PARSER FOR BODY REQUEST
 app.use(express.json());
