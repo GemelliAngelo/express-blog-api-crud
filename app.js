@@ -1,5 +1,6 @@
 // # INIT EXPRESS
 const express = require("express");
+const cors = require("cors");
 const app = express();
 
 // # MIDDLEWARES IMPORTS
@@ -15,6 +16,9 @@ require("dotenv").config();
 // # DOTENV PROCESS DATA
 const port = process.env.HOST_PORT;
 const domain = process.env.HOST_DOMAIN;
+
+// # CORS
+app.use(cors());
 
 // # JSON PARSER FOR BODY REQUEST
 app.use(express.json());

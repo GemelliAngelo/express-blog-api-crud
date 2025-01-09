@@ -10,7 +10,7 @@ function index(req, res) {
   // * if query exists
   if (tag) {
     filteredPost = postsData.filter((post) => {
-      return post.tags.includes(tag);
+      return post.categories.includes(tag);
     });
   }
 
@@ -46,10 +46,10 @@ function show(req, res) {
 function store(req, res) {
   // * variables
   const id = postsData.at(-1).id + 1;
-  const { title, content, image, tags } = req.body;
+  const { title, content, image, categories } = req.body;
 
   // * managing error
-  if (!title || !content || !image || !tags?.length) {
+  if (!title || !content || !image || !categories?.length) {
     const err = new Error("Missing data not found");
     throw err;
   }
@@ -60,14 +60,14 @@ function store(req, res) {
     title: title,
     content: content,
     image: image,
-    tags: tags,
+    categories: categories,
   };
 
   postsData.push(newPost);
 
   // * output
   console.log(postsData);
-  res.sendStatus(204);
+  res.status(204).json(postsData);
 }
 
 // # UPDATE
@@ -91,10 +91,10 @@ function update(req, res) {
   }
 
   // * variable
-  const { title, content, image, tags } = req.body;
+  const { title, content, image, categories } = req.body;
 
   // * managing error
-  if (!title || !content || !image || !tags?.length) {
+  if (!title || !content || !image || !categories?.length) {
     const err = new Error("Missing data not found");
     throw err;
   }
@@ -103,7 +103,7 @@ function update(req, res) {
     (post.title = title),
     (post.content = content),
     (post.image = image),
-    (post.tags = tags);
+    (post.categories = categories);
 
   // * output
   console.log(postsData);
@@ -149,7 +149,7 @@ function destroy(req, res) {
 
   // * output
   console.log(postsData);
-  res.sendStatus(204);
+  res.status(200).json(postsData);
 }
 
 // # EXPORTS
